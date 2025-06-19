@@ -145,5 +145,10 @@ sendBtn.addEventListener('click', () => {
 
 
 
+
+window.onload = () => {
+  chat.scrollTop = chat.scrollHeight;
+};
+
 getRoomMessages()
 
