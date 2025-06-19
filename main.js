@@ -47,6 +47,12 @@ const pushMessages = async (data) => {
 
 
 import { GoogleGenAI } from "@google/genai";
+
+//search with google 
+const groundingTool = {
+  googleSearch: {},
+};
+
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API });
 
 const BotResponseMessage = async (msg) => {
@@ -69,7 +75,9 @@ const BotResponseMessage = async (msg) => {
     contents.push({
       role: 'model',
       parts: [{
-        text: `You are an expert assistant for INES‑Ruhengeri University. Only provide answers about INES. If asked something you don't know, say "I don’t have information on that."`
+        text: `You are an expert assistant for INES‑Ruhengeri University.
+        provide answers about INES INES‑Ruhengeri University. 
+        make sure to access the internet to search information about NES‑Ruhengeri University"`
       }]
     });
 
@@ -84,6 +92,9 @@ const BotResponseMessage = async (msg) => {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents,
+      config: {
+        tools: [groundingTool],
+      },
     });
 
     const text = response.text
