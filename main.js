@@ -77,7 +77,8 @@ const BotResponseMessage = async (msg) => {
       parts: [{
         text: `You are an expert assistant for INES‑Ruhengeri University.
         provide answers about INES INES‑Ruhengeri University. 
-        make sure to access the internet to search information about NES‑Ruhengeri University"`
+        make sure to access the internet to search information about NES‑Ruhengeri University
+        also can you be friendly and use emojis to make the students think ines has good staff"`
       }]
     });
 
